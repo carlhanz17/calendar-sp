@@ -84,3 +84,23 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.rbc-header:nth-child(1) {
+  width: 119px !important;
+}
+
+.rbc-header:nth-child(2) {
+  width: 158px !important;
+}
+
+.rbc-agenda-date-cell {
+  width: 112px !important;
+}
+
+.rbc-agenda-time-cell {
+  width: 158px !important;
+}
+
+.rbc-agenda-event-cell {
+  width: 62% !important;
+}

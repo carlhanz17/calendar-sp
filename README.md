@@ -137,4 +137,4 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - Add to **AppCatalog** and deploy
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-calendar" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/calendar-sp" />

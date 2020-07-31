@@ -65,8 +65,8 @@ const DayPickerStrings: IDatePickerStrings = {
 export class Event extends React.Component<IEventProps, IEventState> {
   private spService: spservices = null;
   private attendees: IPersonaProps[] = [];
-  private latitude: number = 41.1931819;
-  private longitude: number = -8.4897452;
+  //private latitude: number = 41.1931819;
+  //private longitude: number = -8.4897452;
   private returnedRecurrenceInfo: { recurrenceData: string, eventDate: Date, endDate: Date } = undefined;
 
   private categoryDropdownOption: IDropdownOption[] = [];
@@ -75,16 +75,16 @@ export class Event extends React.Component<IEventProps, IEventState> {
     super(props);
 
     /* geolocation is available */
-    if ("geolocation" in navigator) {
+    /*if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
 
       });
     } else {
-      /* geolocation IS NOT available */
+      /* geolocation IS NOT available 
       console.log('browser Geolocation is not available');
-    }
+    }*/
     // Initialize Map coordinates
 
     this.state = {
@@ -96,8 +96,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
       endSelectedMin: { key: '00', text: '00' },
       editorState: EditorState.createEmpty(),
       selectedUsers: [],
-      locationLatitude: this.latitude,
-      locationLongitude: this.longitude,
+      //locationLatitude: this.latitude,
+      //locationLongitude: this.longitude,
       hasError: false,
       errorMessage: '',
       disableButton: true,
@@ -199,9 +199,9 @@ export class Event extends React.Component<IEventProps, IEventState> {
 
     // get Geolocation
 
-    eventData.geolocation = { Latitude: this.latitude, Longitude: this.longitude };
-    const locationInfo = await this.spService.getGeoLactionName(this.latitude, this.longitude);
-    eventData.location = locationInfo ? locationInfo.display_name : 'N/A';
+    //eventData.geolocation = { Latitude: this.latitude, Longitude: this.longitude };
+    //const locationInfo = await this.spService.getGeoLactionName(this.latitude, this.longitude);
+    //eventData.location = locationInfo ? locationInfo.display_name : 'N/A';
 
     // get Attendees
     if (!eventData.attendes) { //vinitialize if no attendees
@@ -297,11 +297,11 @@ export class Event extends React.Component<IEventProps, IEventState> {
         }
       }
       // Has geolocation ?
-      this.latitude = event.geolocation && event.geolocation.Latitude ? event.geolocation.Latitude : this.latitude;
-      this.longitude = event.geolocation && event.geolocation.Longitude ? event.geolocation.Longitude : this.longitude;
+      //this.latitude = event.geolocation && event.geolocation.Latitude ? event.geolocation.Latitude : this.latitude;
+      //this.longitude = event.geolocation && event.geolocation.Longitude ? event.geolocation.Longitude : this.longitude;
 
-      event.geolocation.Latitude = this.latitude;
-      event.geolocation.Longitude = this.longitude;
+      //event.geolocation.Latitude = this.latitude;
+      //event.geolocation.Longitude = this.longitude;
 
       const recurrenceInfo = event.EventType === "4" && event.MasterSeriesItemID !== "" ? event.RecurrenceData : await this.returnExceptionRecurrenceInfo(event.RecurrenceData);
       // Update Component Data
@@ -318,8 +318,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
         userPermissions: userListPermissions,
         isloading: false,
         siteRegionalSettings: siteRegionalSettings,
-        locationLatitude: this.latitude,
-        locationLongitude: this.longitude,
+        //locationLatitude: this.latitude,
+        //locationLongitude: this.longitude,
         recurrenceDescription: recurrenceInfo
       });
     } else {
@@ -550,10 +550,10 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   private async onUpdateCoordinates(coordinates: ICoordinates) {
-    this.latitude = coordinates.latitude;
+    /*this.latitude = coordinates.latitude;
     this.longitude = coordinates.longitude;
     const locationInfo = await this.spService.getGeoLactionName(this.latitude, this.longitude);
-    this.setState({ eventData: { ...this.state.eventData, location: locationInfo.display_name } });
+    this.setState({ eventData: { ...this.state.eventData, location: locationInfo.display_name } });*/
   }
 
   /**
@@ -955,30 +955,30 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     label={strings.StartHourLabel}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                     options={[
-                      { key: '00', text: '00' },
-                      { key: '01', text: '01' },
-                      { key: '02', text: '02' },
-                      { key: '03', text: '03' },
-                      { key: '04', text: '04' },
-                      { key: '05', text: '05' },
-                      { key: '06', text: '06' },
-                      { key: '07', text: '07' },
-                      { key: '08', text: '08' },
-                      { key: '09', text: '09' },
-                      { key: '10', text: '10' },
-                      { key: '11', text: '11' },
-                      { key: '12', text: '12' },
-                      { key: '13', text: '13' },
-                      { key: '14', text: '14' },
-                      { key: '15', text: '15' },
-                      { key: '16', text: '16' },
-                      { key: '17', text: '17' },
-                      { key: '18', text: '18' },
-                      { key: '19', text: '19' },
-                      { key: '20', text: '20' },
-                      { key: '21', text: '21' },
-                      { key: '22', text: '22' },
-                      { key: '23', text: '23' }
+                      { key: '00', text: '12 AM' },
+                      { key: '01', text: '01 AM' },
+                      { key: '02', text: '02 AM' },
+                      { key: '03', text: '03 AM' },
+                      { key: '04', text: '04 AM' },
+                      { key: '05', text: '05 AM' },
+                      { key: '06', text: '06 AM' },
+                      { key: '07', text: '07 AM' },
+                      { key: '08', text: '08 AM' },
+                      { key: '09', text: '09 AM' },
+                      { key: '10', text: '10 AM' },
+                      { key: '11', text: '11 AM' },
+                      { key: '12', text: '12 PM' },
+                      { key: '13', text: '01 PM' },
+                      { key: '14', text: '02 PM' },
+                      { key: '15', text: '03 PM' },
+                      { key: '16', text: '04 PM' },
+                      { key: '17', text: '05 PM' },
+                      { key: '18', text: '06 PM' },
+                      { key: '19', text: '07 PM' },
+                      { key: '20', text: '08 PM' },
+                      { key: '21', text: '09 PM' },
+                      { key: '22', text: '10 PM' },
+                      { key: '23', text: '11 PM' }
                     ]}
                   />
                 </div>
@@ -1027,30 +1027,30 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     label={strings.EndHourLabel}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                     options={[
-                      { key: '00', text: '00' },
-                      { key: '01', text: '01' },
-                      { key: '02', text: '02' },
-                      { key: '03', text: '03' },
-                      { key: '04', text: '04' },
-                      { key: '05', text: '05' },
-                      { key: '06', text: '06' },
-                      { key: '07', text: '07' },
-                      { key: '08', text: '08' },
-                      { key: '09', text: '09' },
-                      { key: '10', text: '10' },
-                      { key: '11', text: '11' },
-                      { key: '12', text: '12' },
-                      { key: '13', text: '13' },
-                      { key: '14', text: '14' },
-                      { key: '15', text: '15' },
-                      { key: '16', text: '16' },
-                      { key: '17', text: '17' },
-                      { key: '18', text: '18' },
-                      { key: '19', text: '19' },
-                      { key: '20', text: '20' },
-                      { key: '21', text: '21' },
-                      { key: '22', text: '22' },
-                      { key: '23', text: '23' }
+                      { key: '00', text: '12 AM' },
+                      { key: '01', text: '01 AM' },
+                      { key: '02', text: '02 AM' },
+                      { key: '03', text: '03 AM' },
+                      { key: '04', text: '04 AM' },
+                      { key: '05', text: '05 AM' },
+                      { key: '06', text: '06 AM' },
+                      { key: '07', text: '07 AM' },
+                      { key: '08', text: '08 AM' },
+                      { key: '09', text: '09 AM' },
+                      { key: '10', text: '10 AM' },
+                      { key: '11', text: '11 AM' },
+                      { key: '12', text: '12 PM' },
+                      { key: '13', text: '01 PM' },
+                      { key: '14', text: '02 PM' },
+                      { key: '15', text: '03 PM' },
+                      { key: '16', text: '04 PM' },
+                      { key: '17', text: '05 PM' },
+                      { key: '18', text: '06 PM' },
+                      { key: '19', text: '07 PM' },
+                      { key: '20', text: '08 PM' },
+                      { key: '21', text: '09 PM' },
+                      { key: '22', text: '10 PM' },
+                      { key: '23', text: '11 PM' }
                     ]}
                   />
                 </div>
@@ -1138,7 +1138,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                   />
                 </div>
-                <div>
+                {/* <div>
                   <TextField
                     value={this.state.eventData && this.state.eventData.location ? this.state.eventData.location : ''}
                     label={strings.LocationTextLabel}
@@ -1151,7 +1151,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     enableSearch={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? true : false}
                     onUpdateCoordinates={this.onUpdateCoordinates}
                   />
-                </div>
+                </div> */}
               </div>
             }
           </div>
